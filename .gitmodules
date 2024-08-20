@@ -1,0 +1,4 @@
+[submodule "vendor/tabulate"]
+	path = vendor/tabulate
+	url = https://github.com/p-ranav/tabulate.git
+	shallow = true
