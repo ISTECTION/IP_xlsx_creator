@@ -15,6 +15,10 @@ project(${IP_PROJECT_NAME} DESCRIPTION "Консольное приложени�
 
 set(SOURCES src/main.cpp)               # Исходные файлы
 add_executable(${PROJECT_NAME} ${SOURCES})
+set_target_properties(${PROJECT_NAME}      PROPERTIES
+    CXX_STANDARD                                   17   # CXX - стандарт
+    CXX_STANDARD_REQUIRED                          ON   # Обязательная поддержка стандарта
+)
 
 # ------------ Подведение итогов настроек, напечатанных при сборке -------------
 message(STATUS "===== Окончательный обзор для ${PROJECT_NAME} =====")
