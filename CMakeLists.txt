@@ -12,7 +12,9 @@ if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 endif()
 # ------------------------------------------------------------------------------
 project(${IP_PROJECT_NAME} DESCRIPTION "Консольное приложение для создания счёта на оплату")
-add_subdirectory(src)
+
+set(SOURCES src/main.cpp)               # Исходные файлы
+add_executable(${PROJECT_NAME} ${SOURCES})
 
 # ------------ Подведение итогов настроек, напечатанных при сборке -------------
 message(STATUS "===== Окончательный обзор для ${PROJECT_NAME} =====")
