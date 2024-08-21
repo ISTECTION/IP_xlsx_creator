@@ -3,21 +3,13 @@
 
 /// : headers
 #include "../include/document.hpp"
+#include "../include/function.hpp"
 
 /// : standart template library (STL)
 #include <iostream>
 #include <locale>
 #include <filesystem>
 #include <regex>
-
-std::vector<std::string> split (const std::string &str, const char _delim) {
-    std::vector<std::string> _result;
-    std::stringstream _ss (str);
-    std::string _item;
-
-    while (std::getline(_ss, _item, _delim)) { _result.push_back(_item); }
-    return _result;
-}
 
 int main (int argc, const char* argv[]) {
     ::setlocale(LC_ALL, "ru_RU.UTF8");
@@ -38,7 +30,7 @@ int main (int argc, const char* argv[]) {
 
     std::size_t i = 1;
     for (const auto& _item : _docs) {
-        auto _result = split(_item, '_');
+        auto _result = function::split(_item, '_');
         _table.add_row({});
 
         for (std::size_t j = 0; j < _result.size(); j++)
@@ -47,7 +39,6 @@ int main (int argc, const char* argv[]) {
     }
 
     std::cout << _table << std::endl;
-
 
     xlsx_ip::DateOnly _date1;
     std::cout << _date1.get_str_date() << std::endl;

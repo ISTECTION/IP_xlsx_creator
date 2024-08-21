@@ -3,10 +3,7 @@
 #define _DOCUMENT_HPP_
 #include "date.hpp"
 
-#include <string>
-
 namespace xlsx_ip {
-
     class Checked {
     private:
         bool _is_checked_email;
