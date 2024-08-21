@@ -49,7 +49,7 @@ int main (int argc, const char* argv[]) {
     std::cout << _table << std::endl;
 
 
-    xlsx_ip::Date _date1 = xlsx_ip::get_cur_date();
+    xlsx_ip::DateOnly _date1;
     std::cout << _date1.get_str_date() << std::endl;
 
     return 0;
