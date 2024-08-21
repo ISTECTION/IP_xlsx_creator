@@ -13,8 +13,13 @@ endif()
 # ------------------------------------------------------------------------------
 project(${IP_PROJECT_NAME} DESCRIPTION "Консольное приложение для создания счёта на оплату")
 
-set(SOURCES src/main.cpp)               # Исходные файлы
-add_executable(${PROJECT_NAME} ${SOURCES})
+set(SOURCES src/main.cpp)                               # Исходные файлы
+set(HEADERS
+    include/date.hpp
+    include/document.hpp
+)                                                       # Заголовочные файлы
+
+add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 set_target_properties(${PROJECT_NAME}      PROPERTIES
     CXX_STANDARD                                   17   # CXX - стандарт
     CXX_STANDARD_REQUIRED                          ON   # Обязательная поддержка стандарта

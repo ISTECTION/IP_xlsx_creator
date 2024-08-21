@@ -1,6 +1,9 @@
 /// : submodule git
 #include "../vendor/tabulate/single_include/tabulate/tabulate.hpp"
 
+/// : headers
+#include "../include/document.hpp"
+
 /// : standart template library (STL)
 #include <iostream>
 #include <locale>
@@ -26,7 +29,6 @@ int main (int argc, const char* argv[]) {
     for (auto &p : std::filesystem::recursive_directory_iterator(_path)) {
         if (p.path().extension() == ext)
             _docs.push_back(p.path().stem().string());
-
     }
 
     tabulate::Table _table;
@@ -45,5 +47,10 @@ int main (int argc, const char* argv[]) {
     }
 
     std::cout << _table << std::endl;
+
+
+    xlsx_ip::Date _date1 = xlsx_ip::get_cur_date();
+    std::cout << _date1.get_str_date() << std::endl;
+
     return 0;
 }
