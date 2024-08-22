@@ -1,9 +1,5 @@
-/// : submodule git
-#include "../vendor/tabulate/single_include/tabulate/tabulate.hpp"
-
 /// : headers
 #include "../include/document.hpp"
-#include "../include/function.hpp"
 
 /// : standart template library (STL)
 #include <iostream>
@@ -23,25 +19,20 @@ int main (int argc, const char* argv[]) {
             _docs.push_back(p.path().stem().string());
     }
 
-    tabulate::Table _table;
-    _table.format().locale("ru_RU.UTF-8");
-    _table.format().multi_byte_characters(true);
-    _table.add_row({"ID", "КОМПАНИЯ", "ДАТА", "E-MAIL", "ЧЕКИ", "ПОДПИСЬ"});
+    std::vector<xlsx_ip::Document> _doc_list;
 
-    std::size_t i = 1;
     for (const auto& _item : _docs) {
         auto _result = function::split(_item, '_');
-        _table.add_row({});
-
-        for (std::size_t j = 0; j < _result.size(); j++)
-            _table[i][j].set_text(_result[j]);
-        i++;
+        _doc_list.push_back(
+            xlsx_ip::Document {
+                std::stoul(_result[0]),
+                _result[1],
+                xlsx_ip::DateOnly { _result[2] },
+                xlsx_ip::Checked { }
+            }
+        );
     }
 
-    std::cout << _table << std::endl;
-
-    xlsx_ip::DateOnly _date1;
-    std::cout << _date1.get_str_date() << std::endl;
-
+    function::print_table(_doc_list);
     return 0;
 }
